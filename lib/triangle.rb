@@ -1,7 +1,4 @@
-require 'pry'
-
 class Triangle
-
 attr_accessor :side1, :side2, :side3
   def initialize(side1, side2, side3)
     @side1 = side1
@@ -9,24 +6,25 @@ attr_accessor :side1, :side2, :side3
     @side3 = side3
   end
   
-  def kind(triangle)
-    if valid1? && valid2?
-       triangle.
-      
-      binding.pry
+  def kind
+    if  kind.valid?
+    raise TriangleError
+    elsif side1 == side2 && side2 == side3 
+      return :equilateral
+    elsif
+      (side1 != side2) && (side2 != side3) && (side1 != side3)
+      return :scalene
+    else
+      return :isosceles
     end
-  
-  
-  def valid1?(side1, side2, side3)
-    side1.postive? && side2.positive? && side3.positve
   end
   
-  def valid2?(side1, side2, side3)
-    (side1 + side2) > side3
-  end
-  
-  class TriangleError < StandardError
+  def valid?
+    (side1 <= 0 || side2 <= 0 ||side3 <= 0) || (side3 + side2) <= side1
+  end 
     
+  class TriangleError < StandardError
+    puts "error"
   end
 
   
