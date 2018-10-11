@@ -7,7 +7,7 @@ attr_accessor :side1, :side2, :side3
   end
   
   def kind
-    if  kind.valid?
+    if  self.valid?
     raise TriangleError
     elsif side1 == side2 && side2 == side3 
       return :equilateral
